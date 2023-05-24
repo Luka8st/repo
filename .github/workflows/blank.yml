@@ -1,16 +1,12 @@
 name: Label and Issue Workflow
 on:
+  label:
+    types: [created]
   issues:
-    types:
-      - labeled
-  issue_comment:
-    types:
-      - created
+    types: [opened]
 
 jobs:
   print_event_details:
     runs-on: ubuntu-latest
     steps:
-      - name: Print Event Details
-        run: |
-          echo "Trigger - ${{ github.event_name }}, user - ${{ github.actor }}, date - $(date -u)"
+      - run: echo "Trigger - ${{ github.event_name }}, user - ${{ github.actor }}, date - `date`"
